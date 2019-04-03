@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2016-11-03T15:59:01 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CartaoAcessoo" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c43a345e-587d-4b12-a706-4fc4b37b7e28">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="HardSystem"/>
+	<parameter name="usuario" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="senha" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT USUARIO,SENHA FROM LOGIN;]]>
+	</queryString>
+	<field name="usuario" class="java.lang.String"/>
+	<field name="senha" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="187">
+			<frame>
+				<reportElement x="-10" y="0" width="330" height="187" uuid="36ddec9f-2780-4aca-84d3-68a3526af03a"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<staticText>
+					<reportElement x="109" y="19" width="210" height="60" uuid="428c33e9-c5cd-4b83-a5f5-9d8812dc8531"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="19"/>
+					</textElement>
+					<text><![CDATA[CARTÃO DE ACESSO]]></text>
+				</staticText>
+				<componentElement>
+					<reportElement x="130" y="120" width="148" height="65" uuid="a8ef8dc5-508f-4b58-a6e2-6662f7942d9f"/>
+					<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128B" drawText="false" checksumRequired="false">
+						<jr:codeExpression><![CDATA[$F{senha}]]></jr:codeExpression>
+					</jr:barbecue>
+				</componentElement>
+				<textField>
+					<reportElement x="129" y="79" width="111" height="31" uuid="3f8e2871-6ca9-4d27-a1ea-e81439e07ffc"/>
+					<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="190" splitType="Stretch"/>
+	</detail>
+</jasperReport>

@@ -1,0 +1,128 @@
+CREATE TABLE relacaminho(
+id serial NOT NULL, 
+url character varying(255),
+PRIMARY KEY (id)
+);
+
+CREATE TABLE empresa (
+    id_empresa serial NOT NULL,
+    razaosocial character varying(50) NOT NULL,
+    fantasia character varying(50) NOT NULL,
+    cnpj character varying(20) NOT NULL,
+    foto character varying(255) NOT NULL,
+    status character(1) DEFAULT 'S'::bpchar NOT NULL,
+	primary key(id_empresa)
+);
+
+CREATE TABLE formaspagamento (
+    codigo serial NOT NULL,
+    tipo character varying(50) NOT NULL,
+    status character varying(1) DEFAULT 'S'::character varying NOT NULL,
+	primary key(codigo)
+);
+
+CREATE TABLE fornecedorfisico (
+    idfornefisico serial NOT NULL,
+    nome character varying(255) NOT NULL,
+    telefone character varying(25),
+    celular character varying(25),
+    cpf character varying(25),
+    endereco character varying(255),
+    bairro character varying(255),
+    cep character varying(255),
+    img character varying(255),
+    status character(1) DEFAULT 'S'::bpchar NOT NULL,
+	primary key(idfornefisico)
+);
+
+CREATE TABLE fornecedorjuridico (
+    idfornjuridico serial NOT NULL,
+    nome character varying(255) NOT NULL,
+    telefone character varying(25),
+    celular character varying(25),
+    endereco character varying(255),
+    bairro character varying(255),
+    cep character varying(255),
+    cnpj character varying(50),
+    img character varying(255),
+    status character(1) DEFAULT 'S'::bpchar NOT NULL,
+	primary key(idfornjuridico)
+);
+
+CREATE TABLE funcionario (
+    idfuncionario serial NOT NULL,
+    nome character varying(100) NOT NULL,
+    telefone character varying(20) NOT NULL,
+    celular character varying(20) NOT NULL,
+    endereco character varying(100) NOT NULL,
+    bairro character varying(50) NOT NULL,
+    cep character varying(50) NOT NULL,
+    cargo character varying(50) NOT NULL,
+    status character(1) DEFAULT 'S'::bpchar NOT NULL,
+    img character varying(255),
+	primary key(idfuncionario)
+);
+
+CREATE TABLE grupo (
+    id_grupo serial NOT NULL,
+    grupo character varying(100) NOT NULL,
+    status character(1) DEFAULT 'S'::bpchar,
+	primary key(id_grupo)
+);
+
+CREATE TABLE item_venda (
+    codigo serial NOT NULL,
+    cod_venda integer,
+    cod_produto integer,
+    preco_un numeric(15,2),
+    quantidade integer,
+    preco_total numeric(15,2),
+	primary key(codigo)
+);
+
+CREATE TABLE login (
+    id_login serial NOT NULL,
+    usuario character varying(20) NOT NULL,
+    senha character varying(20) NOT NULL,
+    tipo character varying(20) NOT NULL,
+	primary key(id_login)
+); 
+
+ CREATE TABLE produtos (
+    id_produto serial NOT NULL,
+    codbarras character varying(255),
+    descricao character varying(250) NOT NULL,
+    reduzida character varying(25) NOT NULL,
+    grupoprod character varying(50) NOT NULL,
+    fornecedor character varying(50) NOT NULL,
+    quantidade character varying(50) NOT NULL,
+    valorcusto numeric(20,2) NOT NULL,
+    valorlucro numeric(20,2) NOT NULL,
+    img character varying(255) NOT NULL,
+    status character(1) DEFAULT 'S'::bpchar NOT NULL,
+	primary key(id_produto)
+);
+
+CREATE TABLE venda (
+    codigo serial NOT NULL,
+    data_venda date,
+    valor_total numeric(15,2),
+    tipo_paga character varying(50) NOT NULL,
+	primary key(codigo)
+);  
+
+//Querys 
+
+//add foreign keys
+alter table item_venda
+ add constraint fk_cod_produto foreign key("cod_produto") references produtos("id_produto");
+alter table item_venda
+ add constraint fk_cod_venda foreign key("cod_venda") references venda("codigo)
+
+//add relatory
+insert into relacaminho(url)
+ values('way of file\dist\relatorios\MyReports\RelatorioProduto.jasper');
+
+//add login to enter
+insert into login(usuario,senha,tipo)
+ values('ADMIN','ADMIN','ADMIN');
