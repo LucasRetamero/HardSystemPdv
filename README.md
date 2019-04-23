@@ -1,5 +1,5 @@
 # HardSystemPdv 1.0
-Criado usando a linguagem Java,para pequeno comercio gerenciar seu negocio.
+Criado usando a linguagem Java,para pequenos comercios gerenciar seu negocio.
  
 ### Funcionalidades
 - Produtos:
